@@ -1,20 +1,35 @@
 import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
+import GetStarted from '@/app/(root)/auth/GetStarted';
+import { Link, router } from 'expo-router';
 
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
+
 export const SignInOutCard = () => {
+  const handleGetStarted = () => {
+    router.push('/(root)/auth/GetStarted');
+  };
+
+  const handleSignIn = () => {
+    router.push('/auth/SignIn');
+  };
+
   return (
     <View style={styles.container}>
-
-      <TouchableOpacity style={styles.getStarted}>
+      <TouchableOpacity 
+        style={styles.getStarted} 
+        onPress={handleGetStarted}
+      >
         <Text style={styles.getStartedTxt}>Get Started</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.signin}>
+      <TouchableOpacity 
+        style={styles.signin} 
+        onPress={handleSignIn}
+      >
         <Text style={styles.signinTxt}>Sign in</Text>
       </TouchableOpacity>
-
     </View>
   )
 }
