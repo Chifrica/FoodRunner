@@ -1,14 +1,14 @@
 import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
-import GetStarted from '@/app/(root)/auth/GetStarted';
 import { Link, router } from 'expo-router';
 
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
 
 export const SignInOutCard = () => {
+
   const handleGetStarted = () => {
-    router.push('/(root)/auth/GetStarted');
+    router.push('/auth/SignUp');
   };
 
   const handleSignIn = () => {
