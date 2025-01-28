@@ -1,10 +1,11 @@
-import { View, Text, Dimensions } from 'react-native'
+import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { getStarted } from '@/constants/data'
 import { SafeAreaView } from 'react-native'
 import { ScrollView, Image } from 'react-native'
 
-const { width } = Dimensions.get('window')
+const { width } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 const SignUp = () => {
    return (
@@ -20,7 +21,7 @@ const SignUp = () => {
                                   source={slide.image}
                                   style={{
                                       width: width,
-                                      height: 400
+                                      height: 300
                                   }}
                               />
       
@@ -45,9 +46,122 @@ const SignUp = () => {
                       )
                   }
 
-                  <Text>Already have an account</Text>
+                    <View> 
+                        <View style={styles.container}>
+                            <TouchableOpacity 
+                                style={styles.btn} 
+                                //   onPress={handleGetStarted}
+                            >
+                                <View style={{ 
+                                    flexDirection: 'row', 
+                                    alignItems: 'center',
+                                    justifyContent: 'center' 
+                                }}> 
+                                    <Image 
+                                        resizeMode='cover'
+                                        source={require('../../../assets/icons/mail.png')}
+                                        style={{
+                                            width: 24,
+                                            height: 24
+                                        }}
+                                    />
+
+                                    <Text style={[styles.btnTxt, { margin: 5 }]}>Sign up with Email</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={styles.container}>
+                        <TouchableOpacity 
+                                style={styles.btn} 
+                                //   onPress={handleGetStarted}
+                            >
+                                <View style={{ 
+                                    flexDirection: 'row', 
+                                    alignItems: 'center',
+                                    justifyContent: 'center' 
+                                }}> 
+                                    <Image 
+                                        resizeMode='cover'
+                                        source={require('../../../assets/icons/mail.png')}
+                                        style={{
+                                            width: 24,
+                                            height: 24
+                                        }}
+                                    />
+
+                                    <Text style={[styles.btnTxt, { margin: 5 }]}>Sign up with Google</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={styles.container}>
+                        <TouchableOpacity 
+                                style={styles.btn} 
+                                //   onPress={handleGetStarted}
+                            >
+                                <View style={{ 
+                                    flexDirection: 'row', 
+                                    alignItems: 'center',
+                                    justifyContent: 'center' 
+                                }}> 
+                                    <Image 
+                                        resizeMode='cover'
+                                        source={require('../../../assets/icons/mail.png')}
+                                        style={{
+                                            width: 24,
+                                            height: 24
+                                        }}
+                                    />
+
+                                    <Text style={[styles.btnTxt, { margin: 5 }]}>Sign up with Apple</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                  <Text style={styles.txt}>Already have an account? <Text style={styles.txtBtn}>Sign In</Text></Text>
           </SafeAreaView>
       )
 }
 
 export default SignUp
+
+const styles = StyleSheet.create({
+    container: {
+        width: width,
+    },
+    txt: {
+        textAlign: 'center',
+        fontSize: 17,
+        fontFamily: 'sans',
+        padding: 10,
+        marginTop: 50,
+    },
+    txtBtn: {
+        color: '#FF5B00',
+        fontWeight: '700',
+    },
+    btn: {
+        marginTop: 20, 
+        marginLeft: 20, 
+        marginRight: 20,
+        borderRadius: 8,
+        borderColor: '#101010',
+        borderWidth: 1,
+        // width: '100%',
+        // padding: 15,
+        // borderRadius: 10,
+        // backgroundColor: '#fff',
+    },
+    btnTxt: {
+        // fontWeight: 700, 
+        // fontFamily: 'sans', 
+        // textAlign: 'center', 
+        // padding: 10,
+        // color: '#000'
+        fontSize: 16,
+        color: '#000',
+        lineHeight: 24,
+    },
+});
