@@ -24,7 +24,7 @@ export const getStarted = [
         image: images.onboarding4,
         title: {
             firstPart: 'Welcome to ',
-            secondPart: 'FOOFRUNNERS',
+            secondPart: 'FOODRUNNERS',
             highlightColor: '#FF5B00'
         }, 
         description: 'Your personalized meal planner and \n delivery assistant.'

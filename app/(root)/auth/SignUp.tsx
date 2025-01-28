@@ -72,7 +72,7 @@ const SignUp = () => {
                         </View>
 
                         <View style={styles.container}>
-                        <TouchableOpacity 
+                            <TouchableOpacity 
                                 style={styles.btn} 
                                 //   onPress={handleGetStarted}
                             >
@@ -96,7 +96,7 @@ const SignUp = () => {
                         </View>
 
                         <View style={styles.container}>
-                        <TouchableOpacity 
+                            <TouchableOpacity 
                                 style={styles.btn} 
                                 //   onPress={handleGetStarted}
                             >
@@ -107,9 +107,9 @@ const SignUp = () => {
                                 }}> 
                                     <Image 
                                         resizeMode='cover'
-                                        source={require('../../../assets/icons/mail.png')}
+                                        source={require('../../../assets/icons/apple.png')}
                                         style={{
-                                            width: 24,
+                                            width: 20,
                                             height: 24
                                         }}
                                     />
@@ -148,18 +148,13 @@ const styles = StyleSheet.create({
         marginRight: 20,
         borderRadius: 8,
         borderColor: '#101010',
-        borderWidth: 1,
-        // width: '100%',
-        // padding: 15,
-        // borderRadius: 10,
-        // backgroundColor: '#fff',
+        borderWidth: 0.3,
     },
     btnTxt: {
-        // fontWeight: 700, 
-        // fontFamily: 'sans', 
-        // textAlign: 'center', 
-        // padding: 10,
-        // color: '#000'
+        fontWeight: 700, 
+        fontFamily: 'sans', 
+        textAlign: 'center', 
+        paddingLeft: 10,
         fontSize: 16,
         color: '#000',
         lineHeight: 24,
