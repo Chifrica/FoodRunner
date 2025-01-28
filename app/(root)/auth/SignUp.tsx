@@ -3,11 +3,15 @@ import React from 'react'
 import { getStarted } from '@/constants/data'
 import { SafeAreaView } from 'react-native'
 import { ScrollView, Image } from 'react-native'
+import { router } from 'expo-router'
 
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
 
 const SignUp = () => {
+    const handleSignIn = () => {
+        router.push('/auth/SignIn');
+    }
    return (
           <SafeAreaView
           >
@@ -83,7 +87,7 @@ const SignUp = () => {
                                 }}> 
                                     <Image 
                                         resizeMode='cover'
-                                        source={require('../../../assets/icons/mail.png')}
+                                        source={require('../../../assets/icons/google.png')}
                                         style={{
                                             width: 24,
                                             height: 24
@@ -120,7 +124,11 @@ const SignUp = () => {
                         </View>
                     </View>
 
-                  <Text style={styles.txt}>Already have an account? <Text style={styles.txtBtn}>Sign In</Text></Text>
+                    <Text style={styles.txt}>Already have an account?{`  `} 
+                        <Text style={styles.txtBtn} onPress={handleSignIn}> 
+                            Sign In
+                        </Text>
+                    </Text>
           </SafeAreaView>
       )
 }
