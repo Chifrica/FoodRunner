@@ -13,7 +13,7 @@ import drawSoup from "@/assets/images/draw_soup.png";
 import egusiSoup from "@/assets/images/egusiSoup.png";
 import eggAndBeans from "@/assets/images/egg_and_beans.png";
 import foodTrail from "@/assets/images/food_trail.png";
-import friedPlantainAndFriedScrambleEggs from "@/assets/images/fried_plantain_and_fried_scramble_eggs";
+import friedPlantainAndFriedScrambleEggs from "@/assets/images/fried_plantain_and_fried_scrambled_eggs.png";
 import jellofRice2 from "@/assets/images/jellof_rice_2.png";
 import jellofRice3 from "@/assets/images/jellof_rice_3.png";
 import noddles from "@/assets/images/noddles.png";

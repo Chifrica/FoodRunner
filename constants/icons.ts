@@ -1,8 +1,8 @@
-import arrowLeft from "@/assets/icons/arrow-left.png"
-import timeIcon from "@/assets/icons/timeIcon."
+import back from "@/assets/icons/back.png"
+import timeIcon from "@/assets/icons/timeImage.png"
 
 
 export default {
-    arrowLeft,
+    back,
     timeIcon
 }
