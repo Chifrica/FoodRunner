@@ -1,9 +1,10 @@
-import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, Dimensions, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
 import { getStarted } from '@/constants/data'
 import { SafeAreaView } from 'react-native'
 import { ScrollView, Image } from 'react-native'
 import { router } from 'expo-router'
+import { login } from '@/lib/appwrite'
 
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
@@ -12,43 +13,54 @@ const SignUp = () => {
     const handleSignIn = () => {
         router.push('/auth/SignIn');
     }
+
+    const handleLogin = async () => {
+        const result = await login();
+
+        if(result) {
+            console.log('Login successful');
+        } else {
+            Alert.alert('Error', 'Login failed');
+        }
+    }
    return (
           <SafeAreaView
           >
       
-                  {
-                      getStarted.map((slide, index) =>
-                          <View key={index} style={{width}}>
-                              <Image 
-                                  key={index}
-                                  resizeMode='cover'
-                                  source={slide.image}
-                                  style={{
-                                      width: width,
-                                      height: 300
-                                  }}
-                              />
-      
-                              <View style={{marginTop: 10, alignItems: 'center'}}>
-                                  <Text style={{fontWeight: '700', fontSize: 20, fontFamily: 'sans', textAlign: 'center', padding: 10}}>          
-                                      {typeof slide.title == 'string' ? (
-                                          slide.title
-                                      ) : (
-                                          <>
-                                              {slide.title.firstPart}
-                                              <Text style={{color: slide.title.highlightColor}}>
-                                                  {slide.title.secondPart}
-                                              </Text>
-                                          </>
-                                      ) }
-                                  </Text>
-                                  <Text style={{textAlign: 'center', fontSize: 17, color: "gray", padding: 10}}>          
-                                      {slide.description}
-                                  </Text>
-                              </View>
-                          </View>    
-                      )
-                  }
+                  <ScrollView contentContainerStyle={{height: height}}>
+                    {
+                        getStarted.map((slide, index) =>
+                            <View key={index} style={{width}}>
+                                <Image 
+                                    key={index}
+                                    resizeMode='cover'
+                                    source={slide.image}
+                                    style={{
+                                        width: width,
+                                        height: 300
+                                    }}
+                                />
+        
+                                <View style={{marginTop: 10, alignItems: 'center'}}>
+                                    <Text style={{fontWeight: '700', fontSize: 20, fontFamily: 'sans', textAlign: 'center', padding: 10}}>          
+                                        {typeof slide.title == 'string' ? (
+                                            slide.title
+                                        ) : (
+                                            <>
+                                                {slide.title.firstPart}
+                                                <Text style={{color: slide.title.highlightColor}}>
+                                                    {slide.title.secondPart}
+                                                </Text>
+                                            </>
+                                        ) }
+                                    </Text>
+                                    <Text style={{textAlign: 'center', fontSize: 17, color: "gray", padding: 10}}>          
+                                        {slide.description}
+                                    </Text>
+                                </View>
+                            </View>    
+                        )
+                    }
 
                     <View> 
                         <View style={styles.container}>
@@ -129,11 +141,12 @@ const SignUp = () => {
                             Sign In
                         </Text>
                     </Text>
+                  </ScrollView>
           </SafeAreaView>
       )
 }
 
-export default SignUp
+export default SignUp;
 
 const styles = StyleSheet.create({
     container: {
