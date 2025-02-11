@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { slides } from '@/constants/data'
 import { SignInOutCard } from '@/components/SignInOutCard'
+import GlobalProvider from '@/lib/global-provider'
 
 const { width } = Dimensions.get('window')
 
@@ -69,8 +70,10 @@ const OnboardingScreen = () => {
                 )
             }
         </View>
-
-        <SignInOutCard />
+        
+        <GlobalProvider>
+            <SignInOutCard />
+        </GlobalProvider>
 
     </SafeAreaView>
   )

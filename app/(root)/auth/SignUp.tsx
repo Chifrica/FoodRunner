@@ -90,7 +90,7 @@ const SignUp = () => {
                         <View style={styles.container}>
                             <TouchableOpacity 
                                 style={styles.btn} 
-                                //   onPress={handleGetStarted}
+                                  onPress={handleLogin}
                             >
                                 <View style={{ 
                                     flexDirection: 'row', 
