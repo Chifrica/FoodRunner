@@ -5,6 +5,8 @@ import { SafeAreaView } from 'react-native'
 import { ScrollView, Image } from 'react-native'
 import { router } from 'expo-router'
 import { login } from '@/lib/appwrite'
+import { Ionicons } from '@expo/vector-icons'
+
 
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
@@ -15,12 +17,18 @@ const SignUp = () => {
     }
 
     const handleLogin = async () => {
-        const result = await login();
+        try {
+            const result = await login();
 
-        if(result) {
-            console.log('Login successful');
-        } else {
-            Alert.alert('Error', 'Login failed');
+            if(result) {
+                console.log('Login successful');
+                router.push('/auth/SignIn');
+            } else {
+                Alert.alert('Error', 'Login failed');
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            Alert.alert('Error', 'An unexpected error occurred');
         }
     }
    return (
@@ -73,14 +81,8 @@ const SignUp = () => {
                                     alignItems: 'center',
                                     justifyContent: 'center' 
                                 }}> 
-                                    <Image 
-                                        resizeMode='cover'
-                                        source={require('../../../assets/icons/mail.png')}
-                                        style={{
-                                            width: 24,
-                                            height: 24
-                                        }}
-                                    />
+                                    
+                                    <Ionicons name="mail" size={24} color="#FF5B00" />
 
                                     <Text style={[styles.btnTxt, { margin: 5 }]}>Sign up with Email</Text>
                                 </View>
@@ -106,6 +108,8 @@ const SignUp = () => {
                                         }}
                                     />
 
+                                    {/* <Ionicons name="logo-google" size={24} color="rgb(249, 1, 1)" /> */}
+
                                     <Text style={[styles.btnTxt, { margin: 5 }]}>Sign up with Google</Text>
                                 </View>
                             </TouchableOpacity>
@@ -121,14 +125,8 @@ const SignUp = () => {
                                     alignItems: 'center',
                                     justifyContent: 'center' 
                                 }}> 
-                                    <Image 
-                                        resizeMode='cover'
-                                        source={require('../../../assets/icons/apple.png')}
-                                        style={{
-                                            width: 20,
-                                            height: 24
-                                        }}
-                                    />
+
+                                    <Ionicons name="logo-apple" size={24} color="black" />
 
                                     <Text style={[styles.btnTxt, { margin: 5 }]}>Sign up with Apple</Text>
                                 </View>

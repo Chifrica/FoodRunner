@@ -1,7 +1,9 @@
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { Image } from 'react-native'
+import { Feather, Ionicons } from '@expo/vector-icons'
+
 
 
 
@@ -37,12 +39,14 @@ const SignIn = () => {
         <Text style={{textAlign: 'center', fontSize: 18, color: '#101010', paddingBottom: 20}}>Please add your location</Text>
 
         <TouchableOpacity style={styles.useLocation}>
-          <Image source={require('../../../assets/icons/location.png')}/>
+          {/* <Image source={require('../../../assets/icons/location.png')}/> */}
+          <Feather name="map-pin" size={24} color="white" />
           <Text style={styles.useLocationTxt}>Use current location</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.manualLocation}>
-        <Image source={require('../../../assets/icons/search.png')}/>
+        {/* <Image source={require('../../../assets/icons/search.png')}/> */}
+        <Ionicons name="search" size={24} color="#FF5B00"/>
         <Text style={styles.manualLocationTxt}>Enter location manually</Text>
         </TouchableOpacity>
       </ScrollView>
