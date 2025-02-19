@@ -1,5 +1,5 @@
-import { View, Text, Image, Dimensions, ScrollView, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, Image, Dimensions, ScrollView, StyleSheet, NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
+import React, { useState, useEffect, useRef } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { slides } from '@/constants/data'
 import { SignInOutCard } from '@/components/SignInOutCard'
@@ -9,26 +9,37 @@ const { width } = Dimensions.get('window')
 
 const OnboardingScreen = () => {
     const [imgActive, setImgActive] = useState(0);
-    
+    const scrollViewRef = useRef<ScrollView>(null);
 
-    const onchange = (nativeEvent: any) => {
-        if (nativeEvent) {
-            const slide = Math.ceil(nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width);
-            if (slide != imgActive){
-                setImgActive(slide)
-            }
-        }
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setImgActive((prevIndex) => {
+                const nextIndex = (prevIndex + 1) % slides.length;
+                scrollViewRef.current?.scrollTo({ x: nextIndex * width, animated: true });
+                return nextIndex;
+            });
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [imgActive]);
+    
+    const onchange = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+        const contentOffsetX = event.nativeEvent.contentOffset.x;
+        const currentIndex = Math.round(contentOffsetX / width);
+        setImgActive(currentIndex);
     };
 
   return (
     <SafeAreaView>
         <ScrollView 
-        onScroll={({nativeEvent}) => onchange(nativeEvent)}
-        showsHorizontalScrollIndicator={false}
-        pagingEnabled
-        horizontal
+            onScroll={onchange}
+            showsHorizontalScrollIndicator={false}
+            pagingEnabled
+            horizontal
+            ref={scrollViewRef}
+            scrollEventThrottle={16}
         >
-
             {
                 slides.map((slide, index) =>
                     <View key={index} style={{width}}>
@@ -38,11 +49,11 @@ const OnboardingScreen = () => {
                             source={slide.image}
                             style={{
                                 width: width,
-                                height: 400
+                                height: 500
                             }}
                         />
 
-                        <View style={{marginTop: 10, alignItems: 'center'}}>
+                        <View style={{marginTop: 2, alignItems: 'center'}}>
                             <Text style={{fontWeight: '700', fontSize: 20, fontFamily: 'sans', textAlign: 'center', padding: 10}}>          
                                 {typeof slide.title == 'string' ? (
                                     slide.title
@@ -64,7 +75,7 @@ const OnboardingScreen = () => {
         <View style={styles.dotContainer}>
             {
                 slides.map((slide, index) => 
-                    <Text key={index} style={imgActive == index ? styles.dotActive : styles.dot}>
+                    <Text key={index} style={imgActive == index ? styles.dotActive : styles.dotInActive}>
                         ●
                     </Text>
                 )
@@ -93,7 +104,7 @@ const styles = StyleSheet.create({
         color: '#FF5B00',
         fontSize: 20
     },
-    dot: {
+    dotInActive: {
         margin: 3,
         color: '#D6D6D6',
         fontSize: 20
