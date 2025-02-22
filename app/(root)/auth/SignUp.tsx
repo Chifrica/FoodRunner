@@ -13,7 +13,7 @@ const { height } = Dimensions.get('window');
 
 const SignUp = () => {
     const handleSignIn = () => {
-        router.push('/auth/SignIn');
+        router.replace('/auth/SignIn');
     }
 
     const handleLogin = async () => {
@@ -22,7 +22,7 @@ const SignUp = () => {
 
             if(result) {
                 console.log('Login successful');
-                router.push('/auth/SignIn');
+                router.push('/(tabs)');
             } else {
                 Alert.alert('Error', 'Login failed');
             }

@@ -1,13 +1,20 @@
-import { Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, ScrollView, TouchableOpacity, StyleSheet, Alert } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { Image } from 'react-native'
 import { Feather, Ionicons } from '@expo/vector-icons'
-
-
-
+import { router } from 'expo-router'
 
 const SignIn = () => {
+  const handleHome = () => {
+      try {
+        router.replace('/(root)/(tabs)');
+      } catch (error) {
+        console.error('Navigation error:', error);
+        Alert.alert('Error', 'Failed to navigate');
+      }
+    };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -39,15 +46,19 @@ const SignIn = () => {
         <Text style={{textAlign: 'center', fontSize: 18, color: '#101010', paddingBottom: 20}}>Please add your location</Text>
 
         <TouchableOpacity style={styles.useLocation}>
-          {/* <Image source={require('../../../assets/icons/location.png')}/> */}
           <Feather name="map-pin" size={24} color="white" />
           <Text style={styles.useLocationTxt}>Use current location</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.manualLocation}>
-        {/* <Image source={require('../../../assets/icons/search.png')}/> */}
-        <Ionicons name="search" size={24} color="#FF5B00"/>
-        <Text style={styles.manualLocationTxt}>Enter location manually</Text>
+          <Ionicons name="search" size={24} color="#FF5B00"/>
+          <Text style={styles.manualLocationTxt}>Enter location manually</Text>
+        </TouchableOpacity>
+
+
+        <TouchableOpacity style={styles.manualLocation} onPress={handleHome}>
+          {/* <Ionicons name="search" size={24} color="#FF5B00"/> */ }
+          <Text style={styles.manualLocationTxt}>hi</Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>

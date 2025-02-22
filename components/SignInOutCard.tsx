@@ -1,19 +1,37 @@
-import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, Dimensions, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
-import { Link, router } from 'expo-router';
+import { Link, Redirect, router } from 'expo-router';
+import { useGlobalContext } from '@/lib/global-provider';
+import { login } from '@/lib/appwrite';
 
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
 
 export const SignInOutCard = () => {
 
+  // Just added this files
+  const { refetch, loading, isLoggedIn } = useGlobalContext(); 
+
+  if (!loading && isLoggedIn) {
+    return <Redirect href={'/auth/SignIn'} />;
+  }
+  const handleLogin = async () => {
+    const result = await login();
+
+    if (result) {
+      refetch();
+    } else {
+      Alert.alert('Error', 'Failed to login');
+    }
+  }
+
   const handleGetStarted = () => {
     router.push('/auth/SignUp');
   };
 
-  const handleSignIn = () => {
-    router.push('/auth/SignIn');
-  };
+  // const handleSignIn = () => {
+  //   router.push('/auth/SignIn');
+  // };
 
   return (
     <View style={styles.container}>
@@ -26,7 +44,8 @@ export const SignInOutCard = () => {
 
       <TouchableOpacity 
         style={styles.signin} 
-        onPress={handleSignIn}
+        // Added handleLogin
+        onPress={handleLogin}
       >
         <Text style={styles.signinTxt}>Sign in</Text>
       </TouchableOpacity>

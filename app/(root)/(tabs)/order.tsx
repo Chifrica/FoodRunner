@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Home = () => {
+const Order = () => {
   return (
     <View>
-      <Text>index</Text>
+      <Text>order</Text>
     </View>
   )
 }
 
-export default Home;
+export default Order;
