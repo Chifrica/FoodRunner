@@ -1,7 +1,7 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 import { Tabs } from 'expo-router'
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome6, Ionicons } from '@expo/vector-icons';
 
 
 
@@ -90,7 +90,7 @@ const TabsLayout = () => {
                 headerShown: false,
                 tabBarIcon: ({ focused }) => (
                     <TabIcon 
-                        icon={<Ionicons name="help-circle-outline" size={24} color={focused ? '#FF5B00' : '#666876'}/>} 
+                        icon={<FontAwesome6 name="headset" size={24} color={focused ? '#FF5B00' : '#666876'}/>} 
                         focused={focused} 
                         title="Support" 
                     />
