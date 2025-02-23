@@ -1,28 +1,36 @@
-import { View, StyleSheet, Text, SafeAreaView, ScrollView, TextInput } from 'react-native'
+import { View, StyleSheet, Text, SafeAreaView, ScrollView, TextInput, Image } from 'react-native'
 import React from 'react'
-import { FontAwesome6, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import HomeHeader from '@/components/homeHeader';
+import SearchComponent from '@/components/searchComponent';
 
 const Home = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        
+
         <HomeHeader />
 
-        <View style={styles.searchContainer}>
-          <Ionicons 
-            name="search-outline" 
-            size={24} 
-            color="#666876" 
-            style={styles.searchIcon}
-          />
-          <TextInput
-            placeholder="Search for food or restaurants"
-            placeholderTextColor="#666876"
-            style={styles.searchInput}
-          />
+        <SearchComponent />
+
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', margin: 20}}>
+          <View>
+            <Image source={require('../../../assets/images/breakFast (1).png')} style={{width: 50, height: 50}} />
+            <Text>Breakfast</Text>
+          </View>
+          <View>
+            <Image source={require('../../../assets/images/lunch.png')} style={{width: 50, height: 50}} />
+            <Text>Lunch</Text>
+          </View>
+          <View>
+            <Image source={require('../../../assets/images/dinner.png')} style={{width: 50, height: 50}} />
+            <Text>Dinner</Text>
+          </View>
+          <View>
+            <Image source={require('../../../assets/images/igbos.png')} style={{width: 50, height: 50}} />
+            <Text>Igbos</Text>
+          </View>
         </View>
+        
       </ScrollView>
     </SafeAreaView>
   )
@@ -31,22 +39,5 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
-  searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'gray',
-    marginHorizontal: 20,
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    marginTop: 10
-  },
-  searchIcon: {
-    marginRight: 10
-  },
-  searchInput: {
-    flex: 1,
-    paddingVertical: 12,
-    fontSize: 14,
-    color: '#000',
-  }
+  
 })
