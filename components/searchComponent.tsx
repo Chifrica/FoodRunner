@@ -14,7 +14,7 @@ const SearchComponent = () => {
         />
         <TextInput
             placeholder="Search for food or restaurants"
-            placeholderTextColor="#666876"
+            placeholderTextColor="#F9F9F9"
             style={styles.searchInput}
         />
     </View>
@@ -27,8 +27,8 @@ const styles = StyleSheet.create ({
     searchContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: 'gray',
-        marginHorizontal: 20,
+        backgroundColor: '#98A1B2',
+        marginHorizontal: 10,
         borderRadius: 10,
         paddingHorizontal: 15,
         marginTop: 10

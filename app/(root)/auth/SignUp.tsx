@@ -22,7 +22,7 @@ const SignUp = () => {
 
             if(result) {
                 console.log('Login successful');
-                router.push('/(tabs)');
+                router.push('/(root)/(tabs)');
             } else {
                 Alert.alert('Error', 'Login failed');
             }
